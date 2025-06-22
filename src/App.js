@@ -44,14 +44,14 @@ function App() {
   // EmailJS: Send deadline notification email
   function sendDeadlineEmail(todo) {
     emailjs.send(
-      'service_40o8pyf',      // Replace with your EmailJS service ID
-      'template_8dxerkb',     // Replace with your EmailJS template ID
+      'service_aq5kr4d',      // Replace with your EmailJS service ID
+      'template_pozvdwc',     // Replace with your EmailJS template ID
       {
         to_email: userEmail,
         todo_content: todo.content,
         todo_deadline: todo.deadline
       },
-      'XZQbiTMFXqilrmhLH'       // Replace with your EmailJS public key
+      '9fmbCSb-enlqELjSF'       // Replace with your EmailJS public key
     ).then(
       (response) => {
         console.log('Email sent!', response.status, response.text);
