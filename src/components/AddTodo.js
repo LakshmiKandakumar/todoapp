@@ -1,39 +1,51 @@
 import React, { useState } from 'react';
-import { HStack, Input, Button, useToast } from '@chakra-ui/react';
-import { nanoid } from 'nanoid';
+import { HStack, Input, Button, useColorMode, FormControl, FormLabel } from '@chakra-ui/react';
 
-const AddTodo = ({addTodo}) => {
+function AddTodo({ addTodo }) {
   const [content, setContent] = useState('');
-  const toast = useToast();
-  
-  function handleSubmit(e) {
+  const [deadline, setDeadline] = useState('');
+  const { colorMode } = useColorMode();
+
+  const handleSubmit = e => {
     e.preventDefault();
-
-    if(!content) {
-      toast({
-        title: 'No content',
-        status: 'error',
-        duration: 2000,
-        isClosable: true
-      });
-
-      return;
-    }
-
-    const todo = {
-      id: nanoid(),
-      body: content
-    };
-
-    addTodo(todo);
+    if (!content) return;
+    addTodo({
+      id: Date.now(),
+      content,
+      deadline,
+      completed: false
+    });
     setContent('');
-  }
-  
+    setDeadline('');
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <HStack mt='8'>
-        <Input variant='filled' placeholder='Learning React' value={content} onChange={(e) => setContent(e.target.value)} />
-        <Button type='submit' colorScheme='cyan' px='8'>Add Todo</Button>
+    <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+      <HStack spacing={4} w="100%">
+        <FormControl>
+          <FormLabel color={colorMode === 'light' ? 'gray.800' : 'whiteAlpha.900'} mb={1}>Todo</FormLabel>
+          <Input
+            variant="filled"
+            placeholder="Add a new todo"
+            value={content}
+            onChange={e => setContent(e.target.value)}
+            bg={colorMode === 'light' ? 'white' : 'gray.700'}
+            color={colorMode === 'light' ? 'gray.800' : 'whiteAlpha.900'}
+          />
+        </FormControl>
+        <FormControl>
+          <FormLabel color={colorMode === 'light' ? 'gray.800' : 'whiteAlpha.900'} mb={1}>Deadline</FormLabel>
+          <Input
+            type="datetime-local"
+            value={deadline}
+            onChange={e => setDeadline(e.target.value)}
+            bg={colorMode === 'light' ? 'white' : 'gray.700'}
+            color={colorMode === 'light' ? 'gray.800' : 'whiteAlpha.900'}
+          />
+        </FormControl>
+        <Button colorScheme="purple" type="submit" px={6}>
+          Add
+        </Button>
       </HStack>
     </form>
   );
