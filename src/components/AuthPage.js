@@ -41,14 +41,14 @@ function AuthPage({ onLogin, onFreeUser }) {
     setLoading(true);
     try {
       if (isLogin) {
-        const res = await axios.post('https://todo-app-4-ff4h.onrender.com', {
+        const res = await axios.post('https://todo-app-4-ff4h.onrender.com/api/auth/login', {
           email: form.email,
           password: form.password
         });
         localStorage.setItem('token', res.data.token);
         if (onLogin) onLogin(form.email); // Pass email here
       } else {
-        await axios.post('https://todo-app-4-ff4h.onrender.com', {
+        await axios.post('https://todo-app-4-ff4h.onrender.com/api/auth/signup', {
           email: form.email,
           password: form.password
         });
@@ -160,7 +160,7 @@ function AuthPage({ onLogin, onFreeUser }) {
         <GoogleLogin
           width="100%"
           onSuccess={credentialResponse => {
-            axios.post('https://todo-app-4-ff4h.onrender.com', {
+            axios.post('https://todo-app-4-ff4h.onrender.com/api/auth/google', {
               token: credentialResponse.credential
             })
             .then(res => {

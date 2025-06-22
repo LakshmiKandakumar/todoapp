@@ -32,7 +32,7 @@ function Signup() {
     }
     setLoading(true);
     try {
-      await axios.post('https://todo-app-4-ff4h.onrender.com', {
+      await axios.post('https://todo-app-4-ff4h.onrender.com/api/auth/signup', {
         email: form.email,
         password: form.password
       });
