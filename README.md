@@ -35,7 +35,7 @@ Features include authentication, profile management, deadline reminders, and ema
 ### 1. Clone the repository
 
 ```sh
-git clone https://github.com/Muthu-Kumaran-T/Todo-App.git
+git clone https://github.com/LakshmiKandakumar/todoapp
 cd todo-list-app
 ```
 
