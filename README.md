@@ -20,10 +20,10 @@ Features include authentication, profile management, deadline reminders, and ema
 ## 📸 Screenshots
 
 ### Login Page
-![Login Page](./Screenshots/TodoPage.png)
+![Login Page](./Screenshots/LoginPage.png)
 
 ### Todo Page
-![Todo Page](./Screenshots/LoginPage.png)
+![Todo Page](./Screenshots/TodoPage.png)
 
 
 
